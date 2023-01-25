@@ -49,11 +49,41 @@ const insertCountryData = (data:any[]) => {
   });
 };
 
+const pagination = (headers: any) => {
+  let firstPage: string;
+  let prevPage: string;
+  let nextPage: string;
+  let lastPage: string;
+
+  const links = headers.link.split(' ');
+  if (links.length === 6) {
+    const nextOrPrev = headers.link.split(' ')[3].slice(5, -2);
+    if (nextOrPrev === 'next') {
+      firstPage = links[0].slice(1, -2);
+      nextPage = links[2].slice(1, -2);
+      lastPage = links[4].slice(1, -2);
+    } else if (nextOrPrev === 'prev') {
+      firstPage = links[0].slice(1, -2);
+      prevPage = links[2].slice(1, -2);
+      lastPage = links[4].slice(1, -2);
+    }
+  } else if (links.length === 8) {
+    firstPage = links[0].slice(1, -2);
+    prevPage = links[2].slice(1, -2);
+    nextPage = links[4].slice(1, -2);
+    lastPage = links[6].slice(1, -2);
+  }
+  console.log(`Previous: ${prevPage} First: ${firstPage} Next: ${nextPage} Last: ${lastPage}`)
+};
+
 /* ############################# Fetch country data ############################# */
 
 const FetchCountries = (apiUrl: URL) => {
   axios.get(apiUrl.toString())
-    .then((response) => insertCountryData(response.data));
+    .then((response) => {
+      insertCountryData(response.data);
+      pagination(response.headers);
+    });
 };
 
 /* ############################# Delete all country rows from table ############################# */
