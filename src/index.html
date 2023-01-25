@@ -11,6 +11,76 @@
 </head>
 <body>
 
+    <div class="container">
+
+        <div class="container__row">
+            <h1 class="title">Countries</h1>
+        </div>
+
+        <div class="container__row filters">
+                    <label>
+                        Country
+                        <input type="text" placeholder="Type at least 3 characters..." class="input js-country-search">
+                    </label> 
+                    <label>
+                        Capital
+                        <input type="text" placeholder="Type at least 3 characters..." class="input js-capital-search">
+                    </label>
+                <label>
+                    Currency
+                    <input type="text" placeholder="Type at least 3 characters..." class="input js-currency-search">
+                </label>
+                <label>
+                    Language
+                    <input type="text" placeholder="Type at least 3 characters..." class="input js-language-search">
+                </label>
+        </div>
+        
+        <div class="container__row">
+            <table class="table">
+                <thead class="table__head">
+                    <tr>
+                        <th>
+                            ID
+                        </th>
+                        <th class="js-sort-name">
+                            Country Name 
+                            <div class="img-container">
+                                <img class="sort_arrows" src="assets/images/arrows.webp" alt="sort arrows" width="15px">
+                            </div>
+                        </th>
+                        <th class="js-sort-capital">
+                            Capital City
+                            <div class="img-container">
+                                <img class="sort_arrows" src="assets/images/arrows.webp" alt="sort arrows" width="15px">
+                            </div>
+                        </th>
+                        <th class="js-sort-currency">
+                            Currency
+                            <div class="img-container">
+                                <img class="sort_arrows" src="assets/images/arrows.webp" alt="sort arrows" width="15px">
+                            </div>
+                        </th>
+                        <th class="js-sort-language">
+                            Language
+                            <div class="img-container">
+                                <img class="sort_arrows" src="assets/images/arrows.webp" alt="sort arrows" width="15px">
+                            </div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody class="table__body">
+                </tbody>
+                <tfoot class="table__footer">
+                    <tr>
+                        <th class="footer__th" colspan="5">
+                            <button type="button" class="btn js-load-btn">Load more</button>
+                        </th>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
 
     
     <script src="/scripts.js"></script>

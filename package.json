@@ -10,6 +10,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/lodash": "^4.14.191",
     "@typescript-eslint/eslint-plugin": "^5.45.0",
     "@typescript-eslint/parser": "^5.45.0",
     "copy-webpack-plugin": "^11.0.0",
@@ -28,6 +29,7 @@
     "axios": "^1.2.3",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-airbnb-base": "^15.0.0",
-    "json-server": "^0.17.1"
+    "json-server": "^0.17.1",
+    "lodash": "^4.17.21"
   }
 }
