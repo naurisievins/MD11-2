@@ -19,19 +19,27 @@
 
         <div class="container__row filters">
                     <label>
-                        Country
+                        <span class="label-name">
+                            Country
+                        </span>
                         <input type="text" placeholder="Type at least 3 characters..." class="input js-country-search">
                     </label> 
                     <label>
-                        Capital
+                        <span class="label-name">
+                            Capital
+                        </span>
                         <input type="text" placeholder="Type at least 3 characters..." class="input js-capital-search">
                     </label>
                 <label>
-                    Currency
+                    <span class="label-name">
+                        Currency
+                    </span>
                     <input type="text" placeholder="Type at least 3 characters..." class="input js-currency-search">
                 </label>
                 <label>
-                    Language
+                    <span class="label-name">
+                        Language
+                    </span>
                     <input type="text" placeholder="Type at least 3 characters..." class="input js-language-search">
                 </label>
         </div>
@@ -44,7 +52,7 @@
                             ID
                         </th>
                         <th class="js-sort-name">
-                            Country Name 
+                            Country Name
                             <div class="img-container">
                                 <img class="sort_arrows" src="assets/images/arrows.webp" alt="sort arrows" width="15px">
                             </div>
@@ -73,15 +81,22 @@
                 </tbody>
                 <tfoot class="table__footer">
                     <tr>
-                        <th class="footer__th" colspan="5">
-                            <button type="button" class="btn js-load-btn">Load more</button>
+                        <th class="footer__buttons" colspan="5">
+                            <span class="pagination js-first-page inactive">&#128896;&#128896;</span>
+                            <span class="pagination js-prev-page inactive">&#128896;</span>
+                            <span class="pagination js-next-page">&#128898;</span>
+                            <span class="pagination js-last-page">&#128898;&#128898;</span>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th class="footer__pages" colspan="5">
+                            <span class="pages js-pages">page 1 of 20</span>
                         </th>
                     </tr>
                 </tfoot>
             </table>
         </div>
     </div>
-
     
     <script src="/scripts.js"></script>
 </body>

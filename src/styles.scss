@@ -1,7 +1,10 @@
 @import "assets/reset.scss"; /* Import reset.css */
 
 body {
-    padding:10px 100px;
+    padding:10px 150px;
+    background-image: url(assets/images/globe.webp);
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .title {
@@ -32,9 +35,14 @@ body {
 
   .table > thead > tr > th:not(:first-child) {
     cursor: pointer;
-    width:25%;
+    padding:5px;
+    width:20%;
+    background-color:rgba(212, 212, 212, 0.8);
     &:hover {
-        text-shadow: 1px 1px #c2c1c1;
+        background-color:#b4b2b4;
+        border-bottom: 2px solid rgba(121, 119, 119, 0.651);
+        border-left: 1px solid rgba(121, 119, 119, 0.651);
+        border-right: 1px solid rgba(121, 119, 119, 0.651);
     }
   }
 
@@ -44,7 +52,6 @@ td {
 
 .table__body tr > td:first-child, thead tr > th:first-child {
     font-weight:600;
-    padding-left:15px;
 }
 
 thead th:nth-child(1) {
@@ -55,26 +62,24 @@ thead th:nth-child(4) {
     width: 15%;
 }
 
-tbody tr:nth-child(odd) {
+.table__body tr:nth-child(odd) {
     background-color: #e0dfe0;
 }
 
-tbody tr:nth-child(even) {
+.table__body tr:nth-child(even) {
     background-color: #c5c1c5;
 }
 
 .table__body > tr:hover {
-    background-color:rgb(196, 155, 157);
+    background-color:rgb(172, 172, 149);
 }
 
-.table__body > tr:last-child > th:first-child {
-    color:red;
-    border-bottom: 2px solid;
-    border-radius: 50%;
+.footer__buttons {
+    padding-top:10px;
 }
 
-.footer__th {
-    padding: 10px 0;
+.footer__pages {
+    font-weight:400;
 }
 
 .filters {
@@ -83,7 +88,6 @@ tbody tr:nth-child(even) {
     justify-content: space-around;
     width:100%;
     padding:10px;
-    margin-bottom:10px;
     background-color:rgb(105, 105, 70);
     border-radius: 10px 10px 0 0;
     font-size:1.1rem
@@ -100,14 +104,34 @@ tbody tr:nth-child(even) {
     vertical-align: middle;
 }
 
-.btn {
-    font-weight: 600;
-    border-radius: 5px;
-    padding: 2px 10px;
-    border:none;
-    cursor: pointer;
-    background-color:burlywood;
+.pagination {
+    padding: 5px 10px;
+    border-radius:7px;
+    border:1px solid gray;
+    cursor:pointer;
+    background-color:white;
     &:hover {
-        background-color:rgb(160, 124, 76);
+        background-color:#c5c1c5;
     }
+}
+
+.inactive {
+    cursor:default;
+    opacity:0.5;
+    &:hover {
+        background-color:white;
+    }
+}
+
+.table__footer {
+    user-select: none;
+}
+
+.label-name {
+    font-weight: 600;
+}
+
+.footer__pages {
+    margin-top:3px;
+    background-color: rgba(255, 255, 255, 0.5);
 }
