@@ -1,25 +1,8 @@
 import axios from 'axios';
+import { Country } from './types';
 
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const _ = require('lodash');
-
-type Country = {
-  name: string,
-  code: string,
-  capital: string,
-  region: string,
-  currency: {
-    code: string,
-    name: string,
-    symbol: string
-  },
-  language: {
-    code: string,
-    name: string
-  },
-  flag: string,
-  dialling_code: string,
-  isoCode: string
-}
 
 const url = new URL('http://localhost:3004/countries?_page=1&_limit=20');
 const tableBody = document.querySelector('.table__body');
@@ -310,6 +293,7 @@ const sort = (sortable: HTMLDivElement, sortBy: string) => {
   const sortParams = { _sort: sortBy, _order: 'asc' };
   if (sortable.classList.contains('asc')) {
     sortable.classList.replace('asc', 'desc');
+    // eslint-disable-next-line no-underscore-dangle
     sortParams._order = 'desc';
   } else if (sortable.classList.contains('desc')) {
     sortable.classList.replace('desc', 'asc');
