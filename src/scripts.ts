@@ -1,5 +1,7 @@
 import axios from 'axios';
-import { Country } from './types';
+
+//  Disable 'TypeScript and JavaScript Language Features' to work
+import type { Country } from './types';
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const _ = require('lodash');
@@ -188,11 +190,11 @@ lastPageBtn.addEventListener('click', () => {
 
 /* ############################# Search function ############################# */
 
+let searchUrl:URL = url;
 let canSearch = true;
 const search = (searchFor: string, value: string) => {
   canSearch = false;
   let searchParams = '';
-  let searchURL:URL = url;
   axios.get('http://localhost:3004/countries')
     .then((response) => {
       for (let i = 0; i < response.data.length; i += 1) {
@@ -202,20 +204,19 @@ const search = (searchFor: string, value: string) => {
         }
         if (i === response.data.length - 1 && searchParams) {
           canSearch = false;
-          searchURL = new URL(`${url.href}${searchParams.toString()}`);
+          searchUrl = new URL(`${url.href}${searchParams.toString()}`);
           // eslint-disable-next-line no-loop-func
           const completeSearch = () => {
             resetDefault();
             deleteCountries();
-            fetchCountries(searchURL);
+            fetchCountries(searchUrl);
             canSearch = true;
             id = 1;
           };
           setTimeout(completeSearch, 500);
         } else {
-          currentPage = '1';
-          totalPages = '1';
-          pages.innerHTML = `Page <b>${currentPage}</b> of <b> ${totalPages} </b>`;
+          searchUrl = new URL('http://localhost:3004');
+          pages.innerHTML = '<span style=\'color:#b10808\'>Nothing found</span>';
           deleteCountries();
         }
       }
@@ -287,6 +288,13 @@ searchLanguage.addEventListener('keyup', () => {
   }
 });
 
+const getSortUrl = () => {
+  if (searchUrl !== url) {
+    return searchUrl;
+  }
+  return url;
+};
+
 /* ############################# Sort function, consts and listener ############################# */
 
 const sort = (sortable: HTMLDivElement, sortBy: string) => {
@@ -301,9 +309,9 @@ const sort = (sortable: HTMLDivElement, sortBy: string) => {
     sortable.classList.add('asc');
   }
   const searchParams = new URLSearchParams(sortParams);
-  const sortURL = new URL(`${url.href}&${searchParams.toString()}`);
+  const sortUrl = new URL(`${getSortUrl()}&${searchParams.toString()}`);
   deleteCountries();
-  fetchCountries(sortURL);
+  fetchCountries(sortUrl);
 };
 
 const sortByName:HTMLDivElement = document.querySelector('.js-sort-name');
@@ -313,26 +321,33 @@ const sortByLanguage:HTMLDivElement = document.querySelector('.js-sort-language'
 
 sortByName.addEventListener('click', () => {
   resetDefault();
-  clearInputValues();
   sort(sortByName, 'name');
 });
 
 sortByCapital.addEventListener('click', () => {
   resetDefault();
-  clearInputValues();
   sort(sortByCapital, 'capital');
 });
 
 sortByCurrency.addEventListener('click', () => {
   resetDefault();
-  clearInputValues();
   sort(sortByCurrency, 'currency.name');
 });
 
 sortByLanguage.addEventListener('click', () => {
   resetDefault();
-  clearInputValues();
   sort(sortByLanguage, 'language.name');
+});
+
+/* ############################# Home button ############################# */
+
+const homeBtn = document.querySelector('.js-home');
+
+homeBtn.addEventListener('click', () => {
+  resetDefault();
+  clearInputValues();
+  deleteCountries();
+  fetchCountries(url);
 });
 
 /* ############################# On page load ############################# */

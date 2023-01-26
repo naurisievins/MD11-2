@@ -58,10 +58,6 @@ thead th:nth-child(1) {
     width: 5%;
 }
 
-thead th:nth-child(4) {
-    width: 15%;
-}
-
 .table__body tr:nth-child(odd) {
     background-color: #e0dfe0;
 }
@@ -85,12 +81,16 @@ thead th:nth-child(4) {
 .filters {
     display:flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    gap:10px;
     width:100%;
     padding:10px;
     background-color:rgb(105, 105, 70);
     border-radius: 10px 10px 0 0;
     font-size:1.1rem
+}
+
+.filters > label {
+    flex-grow: 1;
 }
 
 .filters > label > input {
@@ -134,4 +134,15 @@ thead th:nth-child(4) {
 .footer__pages {
     margin-top:3px;
     background-color: rgba(255, 255, 255, 0.5);
+}
+
+.home {
+    align-self:center;
+    width:5%;
+    &:hover {
+        cursor:pointer;
+    }
+    &:hover .home__img{
+        width:22px;
+    }
 }
